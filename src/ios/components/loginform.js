@@ -16,9 +16,9 @@ export default class LoginForm extends React.Component {
 
         this.setState({ error: '', loading: true });
 
-        Firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
-            this.onLoginSuccess.bind(this);
-        }).catch(() => {
+        Firebase.auth().signInWithEmailAndPassword(email, password).then(
+            this.onLoginSuccess.bind(this))
+            .catch(() => {
             Firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(this.onLoginSuccess.bind(this))
             .catch(() => {
